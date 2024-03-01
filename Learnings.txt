@@ -1,0 +1,56 @@
+------------------------
+EMMET -> 
+------------------------
+    Emmet is a plugin for text editors that allows for faster and more efficient HTML and CSS coding. It allows developers to write HTML and CSS code using shorthand notation, which is then expanded into full code by the plugin.
+
+------------------------
+FRAMEWORK vs LIBRARY ->
+------------------------
+
+    The key difference between a framework and a library is that a framework’s code does not contain “completed” functions. On the other hand, frameworks are program scaffolds that supply the blueprint instead of a finished product. As a result, a framework gives the fundamental structure while indicating the required customization from the coder. The framework defines the workflow of a software application, informs the developer of what he needs, and invokes the developer’s code when necessary.
+
+    A library is a group of pre-written codes that make jobs easier to complete. A library is a collection of pre-defined methods and classes that developers can use to ease their work and accelerate development. As a result, developers do not need to write code to achieve specific features. Most programming languages include standard libraries, but developers can create their own customized libraries.
+
+------------------------
+CDN ->
+------------------------
+
+    In summary, a CDN is like a network of smaller warehouses strategically placed to deliver website content faster, more reliably, and with improved performance to users around the world.
+
+
+------------------------------------------------
+CrossOrigin attributie in SCRIPT tag ->
+------------------------------------------------
+
+    The crossorigin attribute in a <script> tag is used to specify whether a script loaded from another origin (a different domain, protocol, or port) should be allowed to access resources from the document that loaded it. This attribute is primarily used for security purposes to prevent cross-origin attacks, such as cross-site scripting (XSS).
+
+------------------------------------------------
+React (Dev vs Prod) CDN ->
+------------------------------------------------
+
+
+    react.development.js:
+
+    For Development: 
+        This file is designed to help developers during the development phase of building a React application.
+        Includes Debugging Tools: It contains additional code that provides helpful warnings and error messages in the browser console. These messages assist developers in identifying and fixing issues while they're coding.
+        Larger File Size: Because it includes these extra debugging tools and warnings, the file size is larger compared to the production version.
+        Optimized for Debugging: It prioritizes ease of debugging and problem-solving over performance.
+        react.production.js:
+
+    For Production: 
+        This file is optimized for production-ready applications, meaning it's intended for use when deploying your React application to live environments.
+        Stripped of Debugging Tools: It lacks the additional debugging code and warnings present in the development version, making it smaller in size.
+        Smaller File Size: By removing unnecessary code, the production version has a smaller file size, which is beneficial for optimizing website loading times.
+        Focused on Performance: Its primary focus is on performance optimization, ensuring that your React application runs efficiently in production environments.
+
+------------------------------------------------
+Defer vs Async ->
+------------------------------------------------
+
+    Defer : 
+        while HTML is getting parsed, fetches script from the network paralelly, only executes the script when the HTML parsing is complete.
+
+    Async : 
+        while HTML is getting parsed, fetches script from the network paralelly, executes the script after fetching and after execution completes it continues with the HTML parsing .
+         
