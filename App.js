@@ -1,34 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement(
-    "h1",
-    { id: "heading" },
-    "Starting React !");
+//JSX
+//JSX ==(babel)==> React.createElement ==(react)==> ReactElement - JS object => HTML Element (render)
+// const jsxHeading = <h1 id="heading">
+//     asjbsakasnj
+//     </h1>;
 
-const parent = React.createElement(
-    "div",
-    { id: "Parent" },
-    [
-        React.createElement(
-            "div",
-            { id: "Child1" },
-            [
-                React.createElement("h1", {}, "1 H1 Tag"),
-                React.createElement("h2", {}, "2 H2 Tag"),
-                React.createElement("h3", {}, "3 H3 Tag")
-            ]
-        ),
-        React.createElement(
-            "div",
-            { id: "Child2" },
-            [
-                React.createElement("h4", {}, "4 H4 Tag"),
-                React.createElement("h5", {}, "5 H5  Tag"),
-                React.createElement("h6", {}, "6 H6  Tag")
-            ]
-        )
-    ]
-)
+//Functional Component
+const Title = () => {
+  return <h1 id="heading">Title</h1>;
+};
 
-ReactDOM.createRoot(document.getElementById("root")).render(parent);
+const subHeading = <h2 id="heading">Sub Heading</h2>;
+
+//Functional Component
+const JsxHeading = () => {
+  return (
+    <div id="container">
+      <Title /> 
+      {subHeading}
+      <h3 id="heading">asjbsakasnj</h3>
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<JsxHeading />);
