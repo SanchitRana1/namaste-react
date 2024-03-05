@@ -1,3 +1,15 @@
-#heading{
-    color:red
+#header{
+    display:flex;
+    justify-content: space-between;    
 }
+
+#logo{
+    /* color:red; */
+}
+#search{
+    /* color:red */
+}
+#user{
+    /* color:red */
+}
+
