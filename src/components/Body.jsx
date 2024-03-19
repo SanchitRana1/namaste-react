@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 export default function Body() {
-  const [resData, setResData] = useState([]);
+  const [resList, setResList] = useState([]);
   const [allResData, setAllResData] = useState([]);
   const [resName, setResName] = useState("");
-  const fetchData = () => {
-    fetch(
-      "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.572880&lng=77.209877&collection=83667",
-      {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((data) => {
-      data = data.json().then((item) => {
-        setAllResData( item.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        setResData(item.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-      });
-    });
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.572880&lng=77.209877&collection=83667"
+    );
+    const jsonData = await data.json();
+    setAllResData(
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setResList(
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
   useEffect(() => {
     fetchData();
@@ -28,26 +26,25 @@ export default function Body() {
 
   const resSearch = (e) => {
     e.preventDefault();
-    if(resName.trim() !== ""){
+    if (resName.trim() !== "") {
       const resSearch = allResData.filter((item) => {
-        const itemNames = item.info.name.toLowerCase(), searchName = resName.toLowerCase().trim()
-        return itemNames.includes(searchName);
+        const itemName = item.info.name.toLowerCase(),
+          searchName = resName.toLowerCase().trim();
+        return itemName.startsWith(searchName) || itemName.includes(searchName);
       });
-      setResData(resSearch)
+      setResList(resSearch);
+    } else {
+      setResList(allResData);
     }
-    else{
-      setResData(allResData);
-    }
-    
   };
 
   const filterTop = (e) => {
     const { name } = e.target;
     if (name.includes("All")) {
-      setResData(allResData);
+      setResList(allResData);
     } else {
       const res = allResData.filter((item) => item.info.avgRating > 4.2);
-      setResData(res);
+      setResList(res);
     }
   };
 
@@ -55,16 +52,18 @@ export default function Body() {
     <div className="body">
       <div className="search">
         <form className="search-form" onSubmit={resSearch}>
-          {/* Input field */}
           <input
             value={resName}
-            onChange={(e) => setResName(e.target.value)}
+            onChange={(e) => {
+              setResName(e.target.value);
+            }}
           ></input>
-          {/* Submit button */}
-          <button className="btn-search" type="submit">Search</button>
+          <button className="btn-search" type="submit">
+            Search
+          </button>
         </form>
       </div>
- 
+
       <div className="filter">
         <button className="filter-btn" name="filterTop" onClick={filterTop}>
           Top Restaurants
@@ -73,15 +72,15 @@ export default function Body() {
           All Restaurants
         </button>
       </div>
-      <div className="res-container">
-        {resData.length > 0 ? (
-          resData.map((item) => {
-            return <RestaurantCard resInfo={item.info} />;
-          })
-        ) : (
-          <div className="loader">Loading Data</div>
-        )}
-      </div>
+      {resList.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="res-container">
+          {resList.map((item) => {
+            return <RestaurantCard resInfo={item?.info} />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
