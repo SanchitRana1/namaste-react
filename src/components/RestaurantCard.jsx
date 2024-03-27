@@ -1,8 +1,9 @@
 import React from "react";
 import { IMG_URL } from "../utils/constants";
 export default function RestruantCard({ resInfo }) {
+
   return (
-    <div className="res-card" key={resInfo?.id}>
+    <div className="res-card" key={resInfo?.id} >
       <img
         className="res-logo"
         alt="res-logo"

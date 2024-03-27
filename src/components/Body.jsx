@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import { RES_API } from "../utils/constants";
 
 export default function Body() {
   const [resList, setResList] = useState([]);
   const [allResData, setAllResData] = useState([]);
   const [resName, setResName] = useState("");
+
+  //fetching Restaurant data for Home page 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.572880&lng=77.209877&collection=83667"
+      RES_API,
+      {
+        headers: {
+          "x-cors-api-key": "temp_b9819b3f7d329ecffa3283a05aea9d7c",
+        },
+      }
     );
     const jsonData = await data.json();
     setAllResData(
@@ -72,12 +81,16 @@ export default function Body() {
           All Restaurants
         </button>
       </div>
-      {resList.length === 0 ? (
+      {resList?.length === 0 ? (
         <Shimmer />
       ) : (
         <div className="res-container">
           {resList.map((item) => {
-            return <RestaurantCard resInfo={item?.info} />;
+            return (
+              <Link className="res-list-container" key={item?.info?.id} to={"/restaurant/" + item?.info?.id}>
+                <RestaurantCard resInfo={item?.info} />
+              </Link>
+            );
           })}
         </div>
       )}
