@@ -58,17 +58,12 @@ class UserAbout extends React.Component {
 
     const { name, location, avatar_url } = this.state.userInfo;
     return (
-      <div className="user-card">
-        <img className="user-img" src={avatar_url} alt="avarat_url" />
-        <div className="user-card-info">
+      <div className="w-[20rem]">
+        <img className="user-img" src={avatar_url} alt="avarat_urlavarat_urlavarat_urlavarat_urlavarat_urlavarat_url" />
+        <div className=" w-100 flex-row text-center">
           <h2>Name: {name}</h2>
           <h3>Location: {location}</h3>
         </div>
-        {/* <button onClick={()=>{
-            this.setState({
-                count: this.state.count+1
-            })
-        }}>Counter</button> */}
       </div>
     );
   }
