@@ -1,32 +1,32 @@
 import React from "react";
-import RestruantCard from "./RestaurantCard";
+import RestaurantCard from "./RestaurantCard";
 
 export default function Shimmer() {
   return (
-    <div className="shimmer-container">
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+    <div className="m-2 p-2 flex flex-wrap">
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
-      <div className="res-list-container">
-        <RestruantCard></RestruantCard>
+      <div className="m-1 p-1 shadow-slate-200 shadow-lg hover:shadow-2xl hover:shadow-slate-400 cursor-pointer">
+        <RestaurantCard></RestaurantCard>
       </div>
     </div>
   );

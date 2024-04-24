@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestaurantInfo from "../utils/useRestaurantInfo";
@@ -8,11 +8,14 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 export default function Body() {
   const [resName, setResName] = useState("");
 
-  //getting fetched data from useRestaurantInfo hook 
+  //getting fetched data from useRestaurantInfo hook
   const {
     resList: [resList, setResList],
     allResData: [allResData, setAllResData],
   } = useRestaurantInfo();
+
+  //enhancing RestaurantCard component using higher higher order component
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   // filter Restaurants on search
   const resSearch = (e) => {
@@ -29,7 +32,7 @@ export default function Body() {
     }
   };
 
-  //filter Top Restaurants 
+  //filter Top Restaurants
   const filterTop = (e) => {
     const { name } = e.target;
     if (name.includes("All")) {
@@ -44,7 +47,6 @@ export default function Body() {
   if(!onlineStatus) {
     return <h1>Looks like you're Offline! Please check your internet connection.</h1>
   }
-
 
   return (
     <div className="body">
@@ -81,7 +83,13 @@ export default function Body() {
                 key={item?.info?.id}
                 to={"/restaurant/" + item?.info?.id}
               >
-                <RestaurantCard resInfo={item?.info} />
+                {/* if a restautant is promoted, add a label to it | (Higher order component) */}
+                {/* {console.log(item)} */}
+                {item?.info?.avgRating >= 4.3 ? (
+                  <RestaurantCardPromoted resInfo={item?.info} />
+                ) : (
+                   <RestaurantCard resInfo={item?.info} />
+                 )}
               </Link>
             );
           })}

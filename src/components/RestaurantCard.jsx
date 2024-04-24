@@ -1,6 +1,6 @@
 import React from "react";
 import { IMG_URL } from "../utils/constants";
-export default function RestruantCard({ resInfo }) {
+export default function RestaurantCard({ resInfo }) {
 
   return (
     <div className="w-[12rem] space-y-1 p-1" key={resInfo?.id} >
@@ -26,3 +26,14 @@ export default function RestruantCard({ resInfo }) {
     </div>
   );
 }
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="p-1 m-[-0.2rem] absolute bg-gray-800 text-white rounded-e-md rounded-t-md">Trending</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
