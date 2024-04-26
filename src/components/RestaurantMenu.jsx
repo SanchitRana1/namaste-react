@@ -5,6 +5,8 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 
 export default function RestaurantMenu() {
+  const [showIndex, setshowIndex] = useState(null);
+  const [expand, setExpand] = useState(false);
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId); //custom hook created
@@ -17,16 +19,25 @@ export default function RestaurantMenu() {
   const menu = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   return (
-    <div className="text-center">
+    <div key="res-menu" className="text-center">
       <h1 className="my-3 p-2 text-4xl font-bold">{name}</h1>
       <p className="my-1 px-2 text-2xl font-semibold">
         {cuisines.join(" | ")} - {costForTwoMessage}
       </p>
 
-      {menu.map((menuItem) => {
+      {menu.map((menuItem, index) => {
         return (
-          <div className="p-2">
-              <RestaurantCategory key={menuItem?.card?.card?.title} data={menuItem?.card?.card}/>
+          <div className="p-2" key={menuItem?.card?.card?.title}>
+            <RestaurantCategory
+              showItems={index === showIndex && expand}
+              data={menuItem?.card?.card}
+              setshowIndex={() => {
+                setshowIndex(index);
+              }}
+              setExpand={()=>{
+                setExpand(!expand)
+              }}
+            />
           </div>
         );
       })}
