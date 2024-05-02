@@ -3,6 +3,7 @@ import ItemCard from "./ItemCard";
 
 export default function ItemList({ data }) {
   // console.log(data);
+  const url = "menu"
 
   return (
     <div className="my-2">
@@ -14,7 +15,7 @@ export default function ItemList({ data }) {
           <h2 className="my-1 font-semibold text-xl">{nestedItem?.title}</h2>
           {console.log(nestedItem)}
           {nestedItem?.itemCards?.map((item) => (
-            <ItemCard key={item.card.info.id} item={item} />
+            <ItemCard key={item.card.info.id} item={item}/>
           ))}
         </div>
       ))}

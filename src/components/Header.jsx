@@ -3,17 +3,22 @@ import logo from "../utils/isolated_hamburger_with_splash_ink_background.jpg";
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
+
 
 export default function Header() {
 
   const onlineStatus = useOnlineStatus();
   const status=onlineStatus ? "green" : "red"; 
 
-  const {loggedInUser} = useContext(UserContext)
-  // console.log(data)
+  //getting logged user name
+  const {loggedInUser} = useContext(UserContext);
+
+  //subscribing to the store using Selector hoor
+const cart = useSelector((store)=>store.cart.items)
 
 return (
-    <div className="flex justify-between shadow-md">
+    <div className="flex justify-between shadow-md sticky top-0 bg-slate-100">
       <div className="logo-container">
         <img className="w-12" src={logo}></img>
       </div>
@@ -25,7 +30,7 @@ return (
           <li><Link to={"/about"}>About Us</Link></li>
           <li><Link to={"/contact"}>Contact Us</Link></li>
           <li><Link to={"/grocery"}>Grocery</Link></li>
-          <li><Link to={"/"}>Cart</Link></li>
+          <li><Link to={"/cart"} className='font-bold'>🛒<span className='text-green-500'>({cart.length})</span></Link></li>
           <li style={{backgroundColor:status, borderRadius:"1rem", width:"1rem",height:"1rem"}}/>
           <li className='font-bold'>{loggedInUser}</li>
           

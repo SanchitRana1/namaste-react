@@ -20,8 +20,8 @@ export default function RestaurantMenu() {
 
   return (
     <div key="res-menu" className="text-center">
-      <h1 className="my-3 p-2 text-4xl font-bold">{name}</h1>
-      <p className="my-1 px-2 text-2xl font-semibold">
+      <h1 key="res-menu-heading" className="my-3 p-2 text-4xl font-bold">{name}</h1>
+      <p key="res-menu-p" className="my-1 px-2 text-2xl font-semibold">
         {cuisines.join(" | ")} - {costForTwoMessage}
       </p>
 
