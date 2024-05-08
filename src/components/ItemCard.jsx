@@ -21,7 +21,7 @@ export default function ItemCard({ item}) {
   };
 
   return (
-    <div className="p-2 flex border-gray-400 border-b-2 text-left justify-between">
+    <div data-testid ="item-card" className="p-2 flex border-gray-400 border-b-2 text-left justify-between">
       <div className="w-8/12">
         <span className="font-semibold">{item?.card?.info?.name}</span>
         <span>

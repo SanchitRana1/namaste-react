@@ -60,6 +60,8 @@ export default function Body() {
         <form className="search-form" onSubmit={resSearch}>
           <input
             className="mx-2 border-solid rounded-full border-2 border-black"
+            data-testid="searchInput"
+            name="search"
             value={resName}
             onChange={(e) => {
               setResName(e.target.value);
